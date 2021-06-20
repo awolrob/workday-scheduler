@@ -9,9 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.0/font/css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.0/font/css/open-iconic-bootstrap.min.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 
   <title>Work Day Scheduler</title>
@@ -25,16 +27,21 @@
   </header>
 
   <div class="container">
-    <div class="m-5 row justify-content-around">
-      <div class="col-md-1 mb-3 hour">
+    <div class="row">
+      <div class="col-1 hour">
         <p>9AM</p>
       </div>
-      <div class="col-md-10 mb-3 future description">
-        <p>Text Area</p>
+      <textarea class="col-10 hour-item future">Test Area 1</textarea>
+      <div class="col-1 saveBtn">
+        <button><span class="oi oi-lock-locked"></span></button>
       </div>
-      <div class="col-md-1 mb-3 saveBtn">
-        <button><span class="oi oi-lock-locked saveBtn"></span></button>
-        <!-- <p></p> -->
+    </div>
+    <div class="row">
+      <div class="col-1 hour">
+        <p>10AM</p>
+      </div>
+      <textarea class="col-10 hour-item future">Test Area 2</textarea>      <div class="col-1 saveBtn">
+        <button><span class="oi oi-lock-locked"></span></button>
       </div>
     </div>
 

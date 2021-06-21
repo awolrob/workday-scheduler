@@ -31,18 +31,18 @@ textarea {
 }
 
 .row {
+  /* removed by Rob */
+  /* white-space was not being applied by Jquery generated code */
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
   ;
 }
 
-.hour {
+.hourDiv {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  /* added by Rob */
-  text-align: right;
 }
 
 .past {
@@ -75,6 +75,8 @@ textarea {
 }
 .lockBtnStyle {
   /* Added By Rob */
+  /* margin-top: 32px; */
+  margin-left: 5px;
   border: 0;
   padding: 0;
   background: #06AED5;

@@ -1,41 +1,51 @@
 $('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
 
-// Set First hour text
-var hourDiv = $("<div>")
-.addClass("row m-1")
-.attr("id","hour-row-2");
+// Load hour rows
+// debugger;
+for (i = 8; i < 25; i++) {
+    var hourDiv = $("<div>")
+        .addClass("row m-1")
+        .attr("id", "hour-row-" + i);
 
-$("#hour-list").append(hourDiv);
+    $("#hour-list").append(hourDiv);
 
-var hourCol = $("<div>")
-.addClass("col-1")
-.addClass("hour")
-.attr("id","hour-2");
+    var hourCol = $("<div>")
+        .addClass("col-1")
+        .addClass("hourDiv")
+        .attr("id", "hour-" + i);
 
-$("#hour-row-2").append(hourCol);
+    $("#hour-row-" + i).append(hourCol);
 
-var hourItem = $("<div>")
-.text("11AM");
-$("#hour-2").append(hourItem);
+    var amPm = "am";
+    var iHour = i;
+    if (i > 11) { amPm = "pm" };
+    if (i > 12) { iHour = i - 12 };
+    var hourItem = $("<p>")
+        .addClass("mt-4")
+        .text(iHour + amPm);
 
-var hourItem = $("<textarea>")
-.addClass("col-10 hour-item future")
-.text("Test Area 2");
-$("#hour-row-2").append(hourItem);
 
-var hourItem = $("<div>")
-.addClass("col-1 saveBtn")
-// ?.text("Test Area 1");
-.attr("id","hour-btn-2");
+    $("#hour-" + i).append(hourItem);
 
-$("#hour-row-2").append(hourItem);
+    var hourItem = $("<textarea>")
+        .addClass("col-10 hour-item future")
+        .text("Test Area " + i);
+    $("#hour-row-" + i).append(hourItem);
 
-var hourItem = $("<button>")
-.addClass("lockBtnStyle oi oi-lock-locked");
-// ?.text("Test Area 1");
+    var hourItem = $("<div>")
+        .addClass("col-1 saveBtn")
+        // ?.text("Test Area 1");
+        .attr("id", "hour-btn-" + i);
 
-$("#hour-btn-2").append(hourItem);
+    $("#hour-row-" + i).append(hourItem);
 
+    var hourItem = $("<button>")
+        .addClass("lockBtnStyle oi oi-lock-locked mt-4");
+    // ?.text("Test Area 1");
+
+    $("#hour-btn-" + i).append(hourItem);
+
+}
 
 // task text was clicked
 $(".hour-item").on("click", function () {

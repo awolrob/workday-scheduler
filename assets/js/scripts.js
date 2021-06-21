@@ -11,7 +11,7 @@ for (i = 8; i < 25; i++) {
 
     var hourCol = $("<div>")
         .addClass("col-1")
-        .addClass("hourDiv")
+        .addClass("hourDiv p-0 pr-1 align-middle")
         .attr("id", "hour-" + i);
 
     $("#hour-row-" + i).append(hourCol);
@@ -21,7 +21,7 @@ for (i = 8; i < 25; i++) {
     if (i > 11) { amPm = "pm" };
     if (i > 12) { iHour = i - 12 };
     var hourItem = $("<p>")
-        .addClass("mt-4")
+        .addClass("mt-4 text-right")
         .text(iHour + amPm);
 
 

@@ -26,32 +26,37 @@
     <p id="currentDay" class="lead"></p>
   </header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-1 hour">
+  <div class="container" id="hour-list">
+    
+    <div class="row m-1" id="hour-row-0">
+      <div class="col-1 hour" id="hour-0">
         <div>9AM</div>
       </div>
       <textarea class="col-10 hour-item future">Test Area 1</textarea>
-      <div class="col-1 saveBtn">
-        <!-- <button class="lockBtnStyle"><span class="oi oi-lock-locked "></span></button> -->
+      <div class="col-1 saveBtn" id="hour-btn-0">
         <button class="lockBtnStyle oi oi-lock-locked"></button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-1 hour">
-        <div>10AM</div>
-      </div>
-      <textarea class="col-10 hour-item future">Test Area 2</textarea>
-      <div class="col-1 saveBtn">
-        <!-- <span> -->
-        <button class="lockBtnStyle oi oi-lock-locked"></button>
-        <!-- </span> -->
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <div class="row m-1" id="hour-row-1">
+      <div class="col-1 hour" id="hour-1">
+        <div>10AM</div>
+      </div>
+      <textarea class="col-10 hour-item future">Test Area 2</textarea>
+      <div class="col-1 saveBtn" id="hour-btn-1">
+        <button class="lockBtnStyle oi oi-lock-locked"></button>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>

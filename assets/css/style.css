@@ -31,8 +31,6 @@ textarea {
 }
 
 .row {
-  /* removed by Rob */
-  /* white-space was not being applied by Jquery generated code */
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;

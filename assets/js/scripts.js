@@ -1,10 +1,12 @@
+/* variables */
+
+
 /* Listeners */
 
 // save button clicked
 $(document).on("click", ".lockBtnStyle", function () {
-    console.log($(".lockBtnStyle").attr("id")," - in button click");
-    console.log($(".lockBtnStyle").parents()," - in button click");
-    // console.log($(".lockBtnStyle").attr("class")," - in button click");
+    var iHourPos = $(this).attr("id");
+    console.log($("#hour-p-" + iHourPos).text());
 
     // saveHourItem();
 });
@@ -15,11 +17,11 @@ $(document).on("click", ".hour-item", function () {
         .text()
         .trim();
     var textClass = $(this).attr("class");
+    var textId = $(this).attr("id");
 
-    console.log(text," - in click");
-    
     var textInput = $("<textarea>")
         .attr("class", textClass)
+        .attr("id", textId)
         .text(text);
     $(this).replaceWith(textInput);
     textInput.trigger("focus");
@@ -28,12 +30,13 @@ $(document).on("click", ".hour-item", function () {
 // editable field was un-focused
 $(document).on("blur", "textarea", ".row", function () {
     var text = $(this).val();
-    console.log(text," - in blur");
     // recreate p element
     var textClass = $(this).attr("class");
+    var textId = $(this).attr("id");
 
     var hourP = $("<p>")
         .attr("class", textClass)
+        .attr("id", textId)
         .text(text);
 
     // replace textarea with new content
@@ -47,8 +50,6 @@ var fFormatCurHour = function (inHour) {
     // receive hour of display row; return format for selected color
     var curHour = moment().format("HH");
     // var std24hr = moment(hour).format("HH");
-    console.log(curHour, inHour);
-    // debugger;
     if (inHour < curHour) {
         return "past";
     } else if (inHour == curHour) {
@@ -71,8 +72,8 @@ for (i = 1; i < 25; i++) {
 
     var hourCol = $("<div>")
         .addClass("col-1")
-        .addClass("hourDiv p-0 pr-1 align-middle")
-        .attr("id", "hour-" + i);
+        .attr("id", "hour-div-" + i)
+        .addClass("hourDiv p-0 pr-1 align-middle");
 
     $("#hour-row-" + i).append(hourCol);
 
@@ -84,14 +85,16 @@ for (i = 1; i < 25; i++) {
         .addClass("mt-4 text-right")
         .text(iHour + " " + amPm);
 
-    $("#hour-" + i).append(hourItem);
-    
+    $("#hour-div-" + i).append(hourItem);
+
     var rColor = fFormatCurHour(i);
 
     var hourItem = $("<p>")
         .addClass("col-10 mb-0 hour-item")
         .addClass(rColor)
+        .attr("id", "hour-p-" + i)
         .text("Test Area " + i);
+
     $("#hour-row-" + i).append(hourItem);
 
     var hourItem = $("<div>")
@@ -102,7 +105,7 @@ for (i = 1; i < 25; i++) {
 
     var hourItem = $("<button>")
         .addClass("lockBtnStyle oi oi-lock-locked mt-4")
-        .attr("id","btnId-"+i);
+        .attr("id", i);
 
     $("#hour-btn-" + i).append(hourItem);
 }

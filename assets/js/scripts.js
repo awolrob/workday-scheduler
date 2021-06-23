@@ -1,24 +1,68 @@
-$('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
+/* Listeners */
 
+// save button clicked
+$(document).on("click", ".lockBtnStyle", function () {
+    console.log($(".lockBtnStyle").attr("id")," - in button click");
+    console.log($(".lockBtnStyle").parents()," - in button click");
+    // console.log($(".lockBtnStyle").attr("class")," - in button click");
+
+    // saveHourItem();
+});
+
+// text to edit clicked
+$(document).on("click", ".hour-item", function () {
+    var text = $(this)
+        .text()
+        .trim();
+    var textClass = $(this).attr("class");
+
+    console.log(text," - in click");
+    
+    var textInput = $("<textarea>")
+        .attr("class", textClass)
+        .text(text);
+    $(this).replaceWith(textInput);
+    textInput.trigger("focus");
+});
+
+// editable field was un-focused
+$(document).on("blur", "textarea", ".row", function () {
+    var text = $(this).val();
+    console.log(text," - in blur");
+    // recreate p element
+    var textClass = $(this).attr("class");
+
+    var hourP = $("<p>")
+        .attr("class", textClass)
+        .text(text);
+
+    // replace textarea with new content
+    $(this).replaceWith(hourP);
+});
+/* End Listeners */
+
+/* Functions */
 // format hour
 var fFormatCurHour = function (inHour) {
     // receive hour of display row; return format for selected color
     var curHour = moment().format("HH");
     // var std24hr = moment(hour).format("HH");
     console.log(curHour, inHour);
-// debugger;
+    // debugger;
     if (inHour < curHour) {
         return "past";
     } else if (inHour == curHour) {
         return "present";
     };
     return "future"
-
 };
+/* End Functions */
 
+/* Begin Code */
+$('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
 
 // Load hour rows
-for (i = 8; i < 25; i++) {
+for (i = 1; i < 25; i++) {
     var hourDiv = $("<div>")
         .addClass("row m-1")
         .attr("id", "hour-row-" + i);
@@ -38,10 +82,10 @@ for (i = 8; i < 25; i++) {
     if (i > 12) { iHour = i - 12 };
     var hourItem = $("<p>")
         .addClass("mt-4 text-right")
-        .text(iHour + amPm);
+        .text(iHour + " " + amPm);
 
     $("#hour-" + i).append(hourItem);
-    // debugger;
+    
     var rColor = fFormatCurHour(i);
 
     var hourItem = $("<p>")
@@ -57,46 +101,8 @@ for (i = 8; i < 25; i++) {
     $("#hour-row-" + i).append(hourItem);
 
     var hourItem = $("<button>")
-        .addClass("lockBtnStyle oi oi-lock-locked mt-4");
+        .addClass("lockBtnStyle oi oi-lock-locked mt-4")
+        .attr("id","btnId-"+i);
 
     $("#hour-btn-" + i).append(hourItem);
-
 }
-
-// task text was clicked
-$(".hour-item").on("click", function () {
-    var text = $(this)
-        .text()
-        .trim();
-    var textInput = $("<textarea>")
-        .addClass("col-10")
-        .addClass("mb-0")
-        .addClass("hour-item")
-        .val(text)
-        .text(text);
-    $(this).replaceWith(textInput);
-    textInput.trigger("focus");
-});
-
-// editable field was un-focused
-
-$(".row").on("blur", "textarea", function () {
-    var text = $(this).val();
-    console.log(text);
-
-    // update task in array and re-save to localstorage
-    // tasks[status][index].text = text;
-    // saveTasks();
-
-    // recreate p element
-    var hourP = $("<p>")
-        .addClass("col-10")
-        .addClass("mb-0")
-        .addClass("hour-item")
-        .val(text)
-        .text(text);
-
-    // replace textarea with new content
-    $(this).replaceWith(hourP);
-
-});

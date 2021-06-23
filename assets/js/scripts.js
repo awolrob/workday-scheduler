@@ -3,6 +3,8 @@
 
 /* Listeners */
 
+// add on refresh
+
 // save button clicked
 $(document).on("click", ".lockBtnStyle", function () {
     var iHourPos = $(this).attr("id");
@@ -45,10 +47,20 @@ $(document).on("blur", "textarea", ".row", function () {
 /* End Listeners */
 
 /* Functions */
+
+//add load local storage
+
+//add saveHour item
+
 // format hour
 var fFormatCurHour = function (inHour) {
     // receive hour of display row; return format for selected color
     var curHour = moment().format("HH");
+
+    //********Test Code
+    curHour = 10;
+    //*************Test Code
+    
     // var std24hr = moment(hour).format("HH");
     if (inHour < curHour) {
         return "past";
@@ -59,11 +71,11 @@ var fFormatCurHour = function (inHour) {
 };
 /* End Functions */
 
-/* Begin Code */
+/* Begin main logic */
 $('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
 
 // Load hour rows
-for (i = 1; i < 25; i++) {
+for (i = 8; i < 18; i++) {
     var hourDiv = $("<div>")
         .addClass("row m-1")
         .attr("id", "hour-row-" + i);
@@ -93,7 +105,7 @@ for (i = 1; i < 25; i++) {
         .addClass("col-10 mb-0 hour-item")
         .addClass(rColor)
         .attr("id", "hour-p-" + i)
-        .text("Test Area " + i);
+        .text("");
 
     $("#hour-row-" + i).append(hourItem);
 

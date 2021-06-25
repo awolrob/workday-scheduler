@@ -30,12 +30,12 @@ textarea {
   border-radius: 15px;
 }
 
-/* .row {
+.row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
   ;
-} */
+}
 
 .hourDiv {
   background-color: #ffffff;
@@ -81,7 +81,8 @@ textarea {
   color: white;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
+.saveBtn :hover {
+  /* font-size: 20px; */
   transition: all .3s ease-in-out;
+  color: black;
 }

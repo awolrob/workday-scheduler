@@ -1,16 +1,15 @@
 /* variables */
-
+// Store local storage 
+// If there is nothing in hourSave set hourSave to an empty array
+var aHourSave = JSON.parse(localStorage.getItem('hourSave')) || [];
+// 8 to 18
 
 /* Listeners */
-
-// add on refresh
 
 // save button clicked
 $(document).on("click", ".lockBtnStyle", function () {
     var iHourPos = $(this).attr("id");
-    console.log($("#hour-p-" + iHourPos).text());
-
-    // saveHourItem();
+    saveHour($(this).attr("id"), $("#hour-p-" + iHourPos).text());
 });
 
 // text to edit clicked
@@ -50,7 +49,10 @@ $(document).on("blur", "textarea", ".row", function () {
 
 //add load local storage
 
-//add saveHour item
+var saveHour = function (hourIndex, inText) {
+    aHourSave[hourIndex] = inText;
+    localStorage.setItem("hourSave", JSON.stringify(aHourSave));
+}
 
 // format hour
 var fFormatCurHour = function (inHour) {
@@ -60,7 +62,7 @@ var fFormatCurHour = function (inHour) {
     //********Test Code
     curHour = 10;
     //*************Test Code
-    
+
     // var std24hr = moment(hour).format("HH");
     if (inHour < curHour) {
         return "past";
@@ -101,11 +103,15 @@ for (i = 8; i < 18; i++) {
 
     var rColor = fFormatCurHour(i);
 
+    hourText = aHourSave[i];
+
+    console.log(hourText);
+
     var hourItem = $("<p>")
         .addClass("col-10 mb-0 hour-item")
         .addClass(rColor)
         .attr("id", "hour-p-" + i)
-        .text("");
+        .text(hourText);
 
     $("#hour-row-" + i).append(hourItem);
 

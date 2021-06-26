@@ -72,8 +72,6 @@ textarea {
   color: white;
 }
 .lockBtnStyle {
-  /* Added By Rob */
-  /* margin-top: 32px; */
   margin-left: 5px;
   border: 0;
   padding: 0;
@@ -82,7 +80,7 @@ textarea {
 }
 
 .saveBtn :hover {
-  /* font-size: 20px; */
+  font-size: 20px;
   transition: all .3s ease-in-out;
   color: black;
 }
